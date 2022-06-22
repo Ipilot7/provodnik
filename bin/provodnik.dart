@@ -41,17 +41,16 @@ class Provodnik with Utils {
           .toString()
           .compareTo(b.statSync().type.toString()))));
 
-      print("   Номер  |  Тип    |  Имя     |      Размер файла");
+      print("   Номер  |  Тип    |  Имя           |  Размер файла");
 
       for (int i = 0; i < fSEntity.length; i++) {
         var sizefile = filesize(fSEntity[i].statSync().size);
 
         if (fSEntity[i] is Directory) {
           print(
-              """       ${f++} 📘 Папка  -- ${fSEntity[i].toString().replaceAll("\\", '/').split("'")[1].split('/').last} | $sizefile""");
+              """       ${f++}  📘 Папка  -- ${fSEntity[i].toString().replaceAll("\\", '/').split("'")[1].split('/').last} """);
         } else {
-          print(""" |------------
-          ${f++} 📝 Файл  -- ${fSEntity[i].toString().replaceAll("\\", '/').split("'")[1].split('/').last} | $sizefile""");
+          print("""       ${f++}  📝 Файл  -- ${fSEntity[i].toString().replaceAll("\\", '/').split("'")[1].split('/').last}  | $sizefile""");
         }
       }
 
